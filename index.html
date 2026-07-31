@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Portal Defense</title>
+<link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="canvas-wrap"></div>
+
+  <!-- Top HUD -->
+  <div id="hud-top">
+    <div class="stat"><span class="icon">❤</span><span id="stat-lives">20</span></div>
+    <div class="stat"><span class="icon">🪙</span><span id="stat-gold">100</span></div>
+    <div class="stat"><span class="icon">🌊</span>Wave <span id="stat-wave">0</span></div>
+    <div class="stat"><span class="icon">★</span><span id="stat-score">0</span></div>
+    <div class="spacer"></div>
+    <button id="btn-speed" class="pill-btn">1x</button>
+    <button id="btn-leaderboard" class="pill-btn">Leaderboard</button>
+    <button id="btn-signin" class="pill-btn">Sign in</button>
+  </div>
+
+  <!-- Toast messages -->
+  <div id="toast"></div>
+
+  <!-- Bottom shop bar -->
+  <div id="hud-bottom">
+    <button class="tower-btn" data-tower="basic">
+      <div class="tower-swatch swatch-basic"></div>
+      <div class="tower-info"><span class="tower-name">Sentry</span><span class="tower-cost">50g</span></div>
+    </button>
+    <button class="tower-btn" data-tower="sniper">
+      <div class="tower-swatch swatch-sniper"></div>
+      <div class="tower-info"><span class="tower-name">Longshot</span><span class="tower-cost">90g</span></div>
+    </button>
+    <button class="tower-btn" data-tower="splash">
+      <div class="tower-swatch swatch-splash"></div>
+      <div class="tower-info"><span class="tower-name">Mortar</span><span class="tower-cost">120g</span></div>
+    </button>
+    <button id="btn-cancel" class="pill-btn ghost" style="display:none;">Cancel</button>
+    <div class="spacer"></div>
+    <button id="btn-start-wave" class="pill-btn primary">Start Wave 1</button>
+  </div>
+
+  <!-- Start overlay -->
+  <div id="overlay-start" class="overlay">
+    <div class="panel">
+      <h1>Portal Defense</h1>
+      <p>Build towers to stop the invaders before they reach the portal. Earn gold from kills, survive as many waves as you can, and submit your score to the leaderboard.</p>
+      <button id="btn-play" class="pill-btn primary big">Play</button>
+      <p class="hint">Drag to rotate the camera &middot; scroll to zoom &middot; click a tower, then click the ground to build</p>
+    </div>
+  </div>
+
+  <!-- Game over overlay -->
+  <div id="overlay-gameover" class="overlay hidden">
+    <div class="panel">
+      <h1>Portal Breached</h1>
+      <p id="final-score-line">You survived <span id="final-wave">0</span> waves and scored <span id="final-score">0</span> points.</p>
+      <p id="gameover-status" class="hint"></p>
+      <div class="row">
+        <button id="btn-submit-score" class="pill-btn primary">Submit Score</button>
+        <button id="btn-restart" class="pill-btn">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaderboard overlay -->
+  <div id="overlay-leaderboard" class="overlay hidden">
+    <div class="panel">
+      <h1>Leaderboard</h1>
+      <ol id="leaderboard-list" class="leaderboard-list"></ol>
+      <button id="btn-close-leaderboard" class="pill-btn">Close</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="./_portals/sdk.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>
